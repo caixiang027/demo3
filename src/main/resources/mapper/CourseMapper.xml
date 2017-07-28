@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example3.mapper.CourseMapper" >
+    <resultMap id="BaseResultMap" type="com.example3.domain.Course" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="subject" property="subject" jdbcType="VARCHAR" />
+        <result column="score" property="score" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <select id="selectAll" resultType="Course">
+        SELECT * FROM Course
+    </select>
+
+    <select id="selectWithStudent" resultType="java.util.Map">
+        SELECT student.id,class.name AS className,student.name AS studentName,
+          course.subject,course.score FROM course LEFT JOIN student ON course.uid=student.id
+        LEFT JOIN class ON class.id=student.cid
+    </select>
+
+    <select id="selectCourseLike" resultType="java.util.Map">
+        <bind name="pattern" value="'%' + _parameter.param2 + '%'" />
+        SELECT student.id,class.name AS className ,student.name AS studentName,
+        course.subject,course.score FROM course LEFT JOIN student ON course.uid=student.id
+        LEFT JOIN class ON class.id=student.cid WHERE ${param1} LIKE #{pattern,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByUid" parameterType="java.lang.Integer" >
+        DELETE FROM course
+        WHERE uid = #{id}
+    </delete>
+
+</mapper>

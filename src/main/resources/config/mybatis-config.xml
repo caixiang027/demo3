@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 命名空间 -->
+    <settings>
+        <!-- 打印SQL语句到控制台 -->
+        <setting name="logImpl" value="STDOUT_LOGGING" />
+    </settings>
+    <typeAliases>
+        <typeAlias alias="Classes" type="com.example3.domain.Classes" />
+        <typeAlias alias="Course" type="com.example3.domain.Course" />
+        <typeAlias alias="Student" type="com.example3.domain.Student" />
+
+    </typeAliases>
+    <!-- 映射map -->
+    <mappers>
+    </mappers>
+</configuration>

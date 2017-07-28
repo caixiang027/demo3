@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example3.mapper.StudentMapper" >
+    <resultMap id="BaseResultMap" type="com.example3.domain.Student" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="age" property="age" jdbcType="VARCHAR" />
+        <result column="sex" property="sex" jdbcType="VARCHAR" />
+        <result column="address" property="address" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <select id="selectAll" resultType="Student">
+        SELECT * FROM student
+    </select>
+
+    <select id="selectAllDetail" resultType="java.util.Map">
+        SELECT class.name AS className,student.name AS studentName,student.sex,student.age,
+        student.address,student.id
+        FROM student LEFT JOIN class ON student.cid=class.id
+    </select>
+
+    <update id="updateStudent" parameterType="com.example3.domain.Student" >
+        UPDATE student
+        SET NAME = #{name},
+        sex = #{sex},
+        cid = #{cid},
+        age = #{age},
+        address = #{address}
+        WHERE id = #{id}
+    </update>
+
+    <insert id="insert" parameterType="com.example3.domain.Student" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO student(id,cid,name,sex,age,address)
+        VALUES (#{id}, #{cid},#{name},#{sex}, #{age}, #{address})
+    </insert>
+
+    <delete id="deleteById" parameterType="java.lang.Integer" >
+        DELETE FROM student
+        WHERE id = #{id}
+    </delete>
+
+</mapper>

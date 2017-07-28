@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>student</title>
+    <script type="text/javascript" src="../static/common/seajs/seajs/2.2.1/sea.js"></script>
+    <script type="text/javascript" src="../static/common/config.js"></script>
+</head>
+<body>
+    <div>
+        <select id ="className"/></select>
+        <input type="text" id="studentName" placeholder="学生姓名"/>
+        <select id = "sex"> <option value="男">男</option> <option value="女">女</option> </select>
+        <input type="text" id="age" placeholder="年龄"/>
+        <input type="text" id="address" placeholder="地址"/>
+        <button type="button" id="add">添加</button>
+    </div>
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th>班级</th>
+                <th>学生姓名</th>
+                <th>性别</th>
+                <th>年龄</th>
+                <th>地址</th>
+            </tr>
+            </thead>
+            <tbody id="studentBody"></tbody>
+        </table>
+    </div>
+    <script type="text/javascript">
+        var timestamp = new Date().getTime();
+        seajs.use('../static/js/student.js?v='+ timestamp);
+    </script>
+</body>
+</html>

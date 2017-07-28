@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>course</title>
+    <script type="text/javascript" src="../static/common/seajs/seajs/2.2.1/sea.js"></script>
+    <script type="text/javascript" src="../static/common/config.js"></script>
+</head>
+<body>
+    <div>
+        <select id="name">
+            <option value="className">班级</option>
+            <option value="studentName">学生姓名</option>
+            <option value="subject">课程</option>
+            <option value="score">分数</option>
+        </select>
+        <input type="text" id="value" />
+        <button type="button" id="select">查询</button>
+    </div>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>班级</th>
+                    <th>学生姓名</th>
+                    <th>科目</th>
+                    <th>分数</th>
+                </tr>
+            </thead>
+            <tbody id="courseBody">
+            </tbody>
+        </table>
+    </div>
+    <script type="text/javascript">
+        var timestamp = new Date().getTime();
+        seajs.use('../static/js/course.js?v='+ timestamp);
+    </script>
+</body>
+</html>
